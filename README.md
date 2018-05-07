@@ -19,3 +19,19 @@ assembly language:
 
     'AX = 0x1234' instead of 'MOV AX, 0x1234'
     'BX += CX'    instead of 'ADD BX, CX'
+
+compile:
+    gcc -o fasm fasm.c  format.c  operand.c  parser.c  syntax.c
+
+The program read instructions line by line, or with input redirection:
+    ./fasm < test.asm
+
+
+BUG issues:
+    1. Syntaxes are not intensively checked. Some individual operands
+    are illegal, such as POP CS.
+    2. Data or immediates must be in hexadecimal and without prefix or suffix,
+    without any verification.
+    3. Prefixes such as segment override or repeat may mismatch the following
+    instruction.
+    4. Lack of direct memory addressing and memory displacement

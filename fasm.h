@@ -40,4 +40,9 @@ typedef struct {
  *     op1=2, op2=56H, word=0, mod=10B, data=1234H
  */
 
+int format (char *buf, char *line);
+int find_oprand (char *operand, int *index);
+int parser(char *line, char *buf, OPCODE *opcode);
+int syntax(char *string, OPCODE opcode);
+
 #endif
